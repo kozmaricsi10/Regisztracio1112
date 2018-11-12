@@ -27,29 +27,37 @@ namespace RegisztracioAlkalmazas
 
             if (!nameTextBox.Text.Equals("") && hobbies.SelectedItem != null)
             {
-
-                StreamWriter sw = new StreamWriter("adat.txt");
-                sw.WriteLine(nameTextBox.Text);
-                sw.WriteLine(dateTimePicker.Text);
-
-                if (radioButtonMale.Checked = true)
+                try
                 {
-                    sw.WriteLine("Ferfi");
+                    StreamWriter sw = new StreamWriter("adat.txt");
+                    sw.WriteLine(nameTextBox.Text);
+                    sw.WriteLine(dateTimePicker.Text);
+
+                    if (radioButtonMale.Checked = true)
+                    {
+                        sw.WriteLine("Ferfi");
+                    }
+                    else if (radioButtonFemale.Checked = true)
+                    {
+                        sw.WriteLine("No");
+                    }
+                    else
+                    {
+                        sw.WriteLine("Semleges");
+                    }
+
+                    sw.WriteLine(hobbies.SelectedItem);
+
+                    MessageBox.Show("Sikeres adatfelvétel.");
+
+                    sw.Close();
                 }
-                else if (radioButtonFemale.Checked = true)
+                catch (Exception ex)
                 {
-                    sw.WriteLine("No");
+
+                    MessageBox.Show(ex.Message);
                 }
-                else
-                {
-                    sw.WriteLine("Semleges");
-                }
-
-                sw.WriteLine(hobbies.SelectedItem);
-
-                MessageBox.Show("Sikeres adatfelvétel.");
-
-                sw.Close();
+                
             }
             else
             {
@@ -87,6 +95,8 @@ namespace RegisztracioAlkalmazas
 
                 hobbies.Items.Add(sr.ReadLine());
 
+                sr.Close();
+            
             }
             catch (Exception ex)
             {
