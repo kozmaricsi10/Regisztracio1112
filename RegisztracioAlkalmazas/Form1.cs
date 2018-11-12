@@ -82,7 +82,7 @@ namespace RegisztracioAlkalmazas
 
                 nameTextBox.Text = sr.ReadLine();
 
-                sr.ReadLine();
+                dateTimePicker.Text = sr.ReadLine();
 
                 String nem = sr.ReadLine();
 
